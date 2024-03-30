@@ -23,7 +23,7 @@ class Quadtree {
 
         let seBoundary = new Rectangle(x + w/2, y + h/2, w/2, h/2);
         this.southeast = new Quadtree(seBoundary, this.capacity);
-        console.log('it should be true')
+        // console.log('it should be true')
         this.divided = true;
     }
 
@@ -38,7 +38,7 @@ class Quadtree {
         }
 
         else{
-            console.log('its at least running');
+            // console.log('its at least running');
             if (!this.divided){
                 this.subdivide();
                 
@@ -46,7 +46,7 @@ class Quadtree {
                 
                 
             }
-            console.log('insert is being called so it should subdivide')
+            // console.log('insert is being called so it should subdivide')
             this.northwest.insert(point);
             this.northeast.insert(point);
             this.southwest.insert(point);
@@ -90,7 +90,7 @@ class Quadtree {
         rect(this.boundary.x, this.boundary.y, this.boundary.w * 2, this.boundary.h * 2);
 
         if (this.divided){
-            console.log('working')
+            // console.log('working')
             this.northwest.show();
             this.northeast.show();
             this.southwest.show();

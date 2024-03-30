@@ -1,5 +1,6 @@
 // import Boid from "./boid";
 const flock = [];
+const flock2 = [];
 
 let alignSlider, cohesionSlider, separationSlider;
 
@@ -7,12 +8,14 @@ let qt;
 
 function setup() {
   createCanvas(1400, 800);
+  
 
   // BOID
   alignSlider = createSlider(0, 2, 1.5, 0.1);
   cohesionSlider = createSlider(0, 2, 1, 0.1);
   separationSlider = createSlider(0, 2, 2, 0.1);
-  for (let i = 0; i < 300; i++) {
+  for (let i = 0; i < 100; i++) {
+    
     flock.push(new Boid());
   }
   // BOID
@@ -32,7 +35,9 @@ function draw(){
 
   // BOID
   for (let boid of flock) {
+    
     boid.edges();
+    // boid.keepWithinBound();
     boid.flock(flock);
     boid.update();
     boid.show();

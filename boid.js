@@ -102,6 +102,37 @@ class Boid {
       this.acceleration.add(cohesion);
       this.acceleration.add(separation);
     }
+
+    keepWithinBound(){
+      const margin = 100;
+      let turnFacttor =  createVector();
+      turnFacttor.add(this.position.y * 2);
+
+      if (this.position.x < margin){
+        this.showRed();
+        // console.log(turnFacttor);
+        this.acceleration.add(turnFacttor);
+      }
+
+      if (this.position.x > width - margin){
+        // console.log('lol')
+        // this.showRed();
+        this.acceleration.sub(turnFacttor);
+      }
+
+      if (this.position.y < margin){
+        // this.showRed();
+        this.acceleration.add(turnFacttor);
+      }
+
+      if (this.position.y > height - margin){
+        // console.log('lol')
+        // this.showRed();
+        this.acceleration.sub(turnFacttor);
+      }
+
+
+    }
   
     update() {
       this.position.add(this.velocity);
@@ -111,8 +142,15 @@ class Boid {
     }
   
     show() {
-      strokeWeight(6);
-      stroke(255);
+      strokeWeight(7);
+      // stroke(255);
+      stroke(255, 204, 0);
+      point(this.position.x, this.position.y);
+    }
+
+    showRed() {
+      strokeWeight(100);
+      stroke(255,0,0);
       point(this.position.x, this.position.y);
     }
   }
